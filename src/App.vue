@@ -4,7 +4,9 @@ import socksGreenImage from './assets/images/socks_green.jpeg'
 
 const product = ref('Socks')
 const image = ref(socksGreenImage)
-
+const inStock = ref(true)
+const inventory = ref(5)
+const onSale = ref(true)
 </script>
   
 <template>
@@ -16,6 +18,11 @@ const image = ref(socksGreenImage)
       </div>
       <div class="product-info">
         <h1>{{ product }}</h1>
+        <p v-if="inventory > 10">In stock</p>
+        <p v-else-if="inventory <= 10 && inventory">Almost sold out!</p>
+        <p v-else>Out of stock</p>
+
+        <p v-show="onSale">On Sale</p>
       </div>
     </div>
   </div>
